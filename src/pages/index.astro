@@ -1,11 +1,586 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const companies = [
+	{ ticker: 'BHP', name: 'BHP Group', color: '#ef8d22' },
+	{ ticker: 'CBA', name: 'Commonwealth Bank', color: '#f1c62d' },
+	{ ticker: 'CSL', name: 'CSL Limited', color: '#db4048' },
+	{ ticker: 'WES', name: 'Wesfarmers', color: '#36a872' },
+	{ ticker: 'MQG', name: 'Macquarie Group', color: '#7072c9' },
+];
+
+const faqs = [
+	['What exactly is OBII?', 'OBII is a paid expert investment intelligence membership. It helps self-directed investors research expert views on companies they follow, explore available reasoning and verify original dated interviews.'],
+	['Why would I use OBII month after month?', 'New expert commentary gives you a reason to return to the companies and commentators you follow. Your plan’s research tools help you keep the record organised and inspect new original sources.'],
+	['What does the investment intelligence actually do?', 'It organises available expert commentary around companies and people, connects context and source dates, and helps you examine what was said. It does not make investment decisions for you.'],
+	['How is it different from free ausbiz?', 'ausbiz lets you watch expert interviews for free. OBII is a paid research membership for searching expert commentary, exploring available reasoning and accessing dated original sources.'],
+	['Do I need a card for the trial?', 'No. The advertised seven-day free trial does not require a credit card.'],
+	['Does OBII provide personal financial advice?', 'No. OBII provides general expert commentary and source-linked research information, not personalised financial advice.'],
+];
 ---
 
 <Layout>
-	<Welcome />
+	<header class="site-header">
+		<div class="shell nav-wrap">
+			<a class="logo" href="#" aria-label="OBII home"><span class="logo-mark">◇</span> obii</a>
+			<nav aria-label="Primary navigation">
+				<a href="#how">How it works</a>
+				<a href="#experts">Experts</a>
+				<a href="#companies">Companies</a>
+				<a href="#pricing">Pricing</a>
+				<a href="#faqs">FAQs</a>
+			</nav>
+			<div class="nav-actions">
+				<a class="login" href="#">Log in</a>
+				<a class="button button-small" href="#pricing">Try OBII free</a>
+			</div>
+			<button class="menu" aria-label="Open menu"><span></span><span></span></button>
+		</div>
+	</header>
+
+	<main>
+		<section class="hero">
+			<div class="hero-glow glow-one"></div>
+			<div class="hero-glow glow-two"></div>
+			<div class="shell hero-grid">
+				<div class="hero-copy">
+					<p class="eyebrow light">OBII / EXPERT INVESTMENT INTELLIGENCE</p>
+					<h1>Some decisions<br />deserve more than<br />a headline.</h1>
+					<p class="hero-lead">You’ve spent years building your portfolio. Go beyond the headline when researching the shares you own.</p>
+					<p class="hero-description">ausbiz lets you watch expert market interviews for free. OBII helps you discover what real experts said, understand their reasoning and check the original source.</p>
+					<div class="hero-actions">
+						<a class="button" href="#pricing">Try OBII free for 7 days <span>→</span></a>
+						<a class="text-link light-link" href="#example">See a real example <span>↓</span></a>
+					</div>
+					<p class="reassurance">7 days free <i></i> No credit card required <i></i> Start with a company you follow</p>
+				</div>
+
+				<div class="hero-visual" aria-label="Illustrative OBII product preview">
+					<div class="portrait portrait-left">
+						<div class="person-art nadine"><span>NB</span></div>
+						<div class="portrait-label"><strong>Nadine Blayney</strong><small>ausbiz · Editorial</small></div>
+					</div>
+					<div class="portrait portrait-right">
+						<div class="person-art kochie"><span>DK</span></div>
+						<div class="portrait-label"><strong>David “Kochie” Koch</strong><small>ausbiz</small></div>
+					</div>
+					<div class="product-window">
+						<div class="window-top">
+							<span class="mini-logo">◇ obii</span>
+							<div class="search">⌕ &nbsp; Search a company or expert</div>
+							<span>•••</span>
+						</div>
+						<div class="window-body">
+							<aside><b>Research</b><span>Home</span><span>Companies</span><span>Experts</span><span>Watchlists</span></aside>
+							<div class="research-panel">
+								<div class="company-head"><span class="ticker">BHP</span><div><b>BHP Group</b><small>ASX:BHP</small></div></div>
+								<div class="tabs"><b>Overview</b><span>Expert views</span><span>Sources</span></div>
+								<h3>Research the original record</h3>
+								<p>Find source-linked expert commentary and view the original dated interview.</p>
+								<div class="record-card"><span class="play">▶</span><div><b>Expert view on BHP</b><small>the call · 2 Nov 2026</small></div><span>→</span></div>
+							</div>
+						</div>
+					</div>
+					<div class="phone">
+						<div class="phone-notch"></div>
+						<span class="mini-logo">◇ obii</span>
+						<div class="phone-card"><span>BHP</span><b>BHP Group</b><small>ASX:BHP</small></div>
+						<p>Latest expert views</p>
+						<div class="phone-line"></div><div class="phone-line short"></div>
+					</div>
+				</div>
+			</div>
+			<div class="shell proof-row">
+				<div><span>01</span><b>Research your shares</b></div>
+				<div><span>02</span><b>Real experts, real sources</b></div>
+				<div><span>03</span><b>Return every few days</b></div>
+			</div>
+		</section>
+
+		<div class="trust-strip">
+			<div class="shell strip-inner">
+				<div class="ausbiz-logo"><span>au</span>sbiz</div>
+				<p>Original market interviews and expert perspectives from ausbiz.</p>
+				<strong>Hear it on ausbiz. Research it on OBII.</strong>
+			</div>
+		</div>
+
+		<section class="section example" id="example">
+			<div class="shell two-col">
+				<div class="section-copy">
+					<p class="eyebrow">A REAL EXAMPLE / BHP ON AUSBIZ</p>
+					<h2>You follow BHP. What did the experts say?</h2>
+					<p>On 2 November 2026, ausbiz discussed BHP on <em>the call</em>. OBII is designed to make this kind of commentary easier to research: find a view, explore the available reasoning and check the dated original recording.</p>
+					<a class="button" href="#how">Explore the research journey <span>→</span></a>
+				</div>
+				<div class="media-card">
+					<div class="video-art">
+						<div class="program">ORIGINAL AUSBIZ EPISODE · 2 NOV 2026</div>
+						<div class="show-logo">the call</div>
+						<button aria-label="Play example">▶</button>
+					</div>
+					<div class="media-info">
+						<div><span class="ticker">BHP</span><p><b>BHP Group</b><small>ASX:BHP</small></p></div>
+						<a href="#">View original ausbiz programme ↗</a>
+					</div>
+				</div>
+			</div>
+			<div class="shell journey">
+				<div><span>01</span><p><b>FIND</b>BHP expert views</p></div>
+				<i>→</i>
+				<div><span>02</span><p><b>UNDERSTAND</b>Available reasons & context</p></div>
+				<i>→</i>
+				<div><span>03</span><p><b>VERIFY</b>Original clip, dated 2 Nov</p></div>
+			</div>
+		</section>
+
+		<section class="section compare-section">
+			<div class="shell">
+				<div class="center-heading">
+					<p class="eyebrow">WHY PAY IF AUSBIZ IS FREE?</p>
+					<h2>Watch it free.<br />Research it with OBII.</h2>
+				</div>
+				<div class="compare-grid">
+					<article class="compare-card">
+						<div class="card-brand ausbiz-logo"><span>au</span>sbiz</div>
+						<p class="card-label">FREE TO WATCH</p>
+						<h3>Hear what the expert said.</h3>
+						<p>Hear market guests discuss shares, market events and investment ideas.</p>
+						<ul><li>Original market broadcasts and interviews</li><li>Journalists and guest commentators</li><li>A window into the market conversation</li></ul>
+					</article>
+					<article class="compare-card obii-card">
+						<div class="card-brand logo"><span class="logo-mark">◇</span> obii</div>
+						<p class="card-label">PAID RESEARCH MEMBERSHIP</p>
+						<h3>Research what it means for you.</h3>
+						<p>Find past and new views by company or expert, save companies and check the original interview.</p>
+						<ul><li>Search by company and named expert</li><li>Dated interview links and available reasoning</li><li>Watchlists, expert follows and research tools</li></ul>
+					</article>
+				</div>
+				<p class="closing-line">You are not paying for the same broadcast again. <strong>You are paying for the tools to research it.</strong></p>
+			</div>
+		</section>
+
+		<section class="steps-band" id="how">
+			<div class="shell">
+				<p class="eyebrow light">HOW OBII WORKS</p>
+				<h2>Your shares.<br />Their expertise.<br />Your decision.</h2>
+				<div class="steps-grid">
+					<div><span>01</span><h3>FIND</h3><p>Search real market commentary on the companies and experts you already follow.</p></div>
+					<div><span>02</span><h3>UNDERSTAND</h3><p>Go beyond a sound bite with the explanation and context available in the record.</p></div>
+					<div><span>03</span><h3>VERIFY</h3><p>Check the date and original ausbiz recording before making up your own mind.</p></div>
+				</div>
+			</div>
+		</section>
+
+		<section class="section product-demo">
+			<div class="shell two-col demo-grid">
+				<div class="demo-window">
+					<div class="demo-bar"><span>◇ OBII · RESEARCH EXPERIENCE</span><span>Search &nbsp; Sources</span></div>
+					<div class="demo-search">⌕ &nbsp; Search company or expert <b>BHP</b></div>
+					<div class="demo-result"><span class="ticker">BHP</span><div><b>BHP Group</b><small>ASX:BHP · Dated expert commentary and original source</small></div><span>→</span></div>
+					<div class="flow-card">
+						<b>BHP · From broadcast to research</b>
+						<div class="flow"><span><i>1</i>FIND<small>Original expert commentary</small></span><span><i>2</i>UNDERSTAND<small>Reasoning and context</small></span><span><i>3</i>VERIFY<small>the call · 2 Nov 2026</small></span></div>
+					</div>
+				</div>
+				<div class="section-copy">
+					<p class="eyebrow">SEE HOW OBII HELPS YOU RESEARCH</p>
+					<h2>Investment intelligence for the shares you follow.</h2>
+					<div class="number-list">
+						<div><span>01</span><p><b>Start with a company.</b> Research available expert views on a stock that matters to you.</p></div>
+						<div><span>02</span><p><b>Go beyond the headline.</b> Explore the reasoning, context and perspectives available.</p></div>
+						<div><span>03</span><p><b>Check the original source.</b> Open the dated interview and decide what matters.</p></div>
+					</div>
+				</div>
+			</div>
+			<div class="shell return-banner">
+				<div><span>↻</span><p><b>Come back every few days. See what’s new on your shares.</b><small>Return to check for new commentary on the shares and experts you follow.</small></p></div>
+				<a class="button" href="#pricing">Try OBII free <span>→</span></a>
+			</div>
+		</section>
+
+		<section class="section people-section" id="experts">
+			<div class="shell">
+				<div class="section-intro">
+					<div><p class="eyebrow">REAL PEOPLE / REAL MARKET COVERAGE</p><h2>Real people behind<br />the market conversations.</h2></div>
+					<p>ausbiz brings the interviews and market commentators. OBII makes that record easier to search and research, with dates and original sources you can inspect.</p>
+				</div>
+				<div class="people-grid">
+					<article class="person-card">
+						<div class="person-photo nadine"><span>NB</span></div>
+						<p class="card-label">AUSBIZ EDITORIAL</p><h3>Nadine Blayney</h3><p>Real broadcast journalism. Recognisable market coverage.</p>
+					</article>
+					<article class="person-card">
+						<div class="person-photo kochie"><span>DK</span></div>
+						<p class="card-label">AUSBIZ</p><h3>David “Kochie” Koch</h3><p>Part of the established ausbiz media business.</p>
+					</article>
+				</div>
+				<div class="expert-list">
+					<span>Gaurav Sodhi<small>Guest expert</small></span><span>Henry Jennings<small>Guest expert</small></span><span>Jun Bei Liu<small>Guest expert</small></span><span>Michael Gable<small>Guest expert</small></span>
+				</div>
+			</div>
+		</section>
+
+		<section class="section company-section" id="companies">
+			<div class="shell">
+				<div class="center-heading"><p class="eyebrow">REAL COMPANIES. REAL CONTEXT.</p><h2>Research begins with a<br />company, not another headline.</h2><p>Start with a company you follow. Find dated expert commentary, explore the context and return when new perspectives become available.</p></div>
+				<div class="companies">
+					{companies.map((company) => <article><span style={`--company-color:${company.color}`}>{company.ticker}</span><div><b>{company.name}</b><small>ASX:{company.ticker}</small></div><i>→</i></article>)}
+				</div>
+			</div>
+		</section>
+
+		<section class="section pricing-section" id="pricing">
+			<div class="shell">
+				<div class="center-heading"><p class="eyebrow">SIMPLE MONTHLY PLANS</p><h2>Try the intelligence.<br />Decide for yourself.</h2><p>Start with seven days free and no credit card. Choose a plan only if the research earns a place in your routine.</p></div>
+				<div class="pricing-grid">
+					<article class="price-card">
+						<p class="card-label">STANDARD</p><h3>Focused research</h3><p>For a smaller group of companies and market experts.</p><div class="price"><sup>A$</sup>53<small>.90<br />/month</small></div><p class="gst">Including GST · A$49 before GST</p>
+						<ul><li>Searchable expert interviews</li><li>One watchlist of up to 10 companies</li><li>Follow up to 20 market experts</li><li>Limited research tools</li></ul>
+						<a class="button outline" href="#">Try OBII free for 7 days <span>→</span></a>
+					</article>
+					<article class="price-card featured">
+						<div class="flag">MORE RESEARCH CAPACITY</div>
+						<p class="card-label">PRO</p><h3>Research with more range</h3><p>More watchlists, experts and research capacity.</p><div class="price"><sup>A$</sup>163<small>.90<br />/month</small></div><p class="gst">Including GST · A$149 before GST</p>
+						<ul><li>Searchable expert interviews</li><li>Four watchlists of up to 10 each</li><li>Follow unlimited market experts</li><li>Full listed research tools</li></ul>
+						<a class="button" href="#">Try OBII free for 7 days <span>→</span></a>
+					</article>
+				</div>
+			</div>
+		</section>
+
+		<section class="section reassurance-section">
+			<div class="shell">
+				<div class="center-heading"><p class="eyebrow">BEFORE YOU BEGIN</p><h2>Seven days to see if it’s useful to you.</h2><p>Explore the product first. Know the terms before choosing to subscribe.</p></div>
+				<div class="reassurance-grid">
+					<div><span>7</span><b>7 days free</b><p>Explore the experience before choosing a plan.</p></div>
+					<div><span>◇</span><b>No card to start</b><p>No payment details required for the trial.</p></div>
+					<div><span>✓</span><b>Choose to continue</b><p>Review features and pricing before subscribing.</p></div>
+					<div><span>↗</span><b>Your own decision</b><p>General research information, not personalised advice.</p></div>
+				</div>
+			</div>
+		</section>
+
+		<section class="section faq-section" id="faqs">
+			<div class="shell faq-grid">
+				<div><p class="eyebrow">COMMON QUESTIONS</p><h2>Everything clear<br />before you begin.</h2><p>The more confidently you understand the research experience, the easier your next step should feel.</p></div>
+				<div class="faq-list">
+					{faqs.map(([question, answer], index) => <details open={index === 0}><summary>{question}<span>+</span></summary><p>{answer}</p></details>)}
+				</div>
+			</div>
+		</section>
+
+		<section class="final-cta">
+			<div class="shell final-inner">
+				<div><p class="eyebrow light">REAL PEOPLE. ORIGINAL SOURCES.</p><h2>You’ve done the work to build your portfolio.<br />Make the research count.</h2><p>Find the commentary. Explore the thinking. Check the original source.</p></div>
+				<div><a class="button" href="#">Try OBII free for 7 days <span>→</span></a><small>No credit card required to start.</small></div>
+			</div>
+		</section>
+	</main>
+
+	<footer>
+		<div class="shell footer-top">
+			<a class="logo" href="#"><span class="logo-mark">◇</span> obii</a>
+			<nav><a href="#how">How it works</a><a href="#experts">Experts</a><a href="#companies">Companies</a><a href="#pricing">Pricing</a><a href="#faqs">FAQs</a></nav>
+			<div class="ausbiz-logo"><span>au</span>sbiz</div>
+		</div>
+		<div class="shell footer-bottom"><span>© 2026 OBII. General information only.</span><span>Terms &nbsp; Privacy &nbsp; Contact</span></div>
+	</footer>
 </Layout>
+
+<style>
+	.shell { width: min(1180px, calc(100% - 48px)); margin: 0 auto; }
+	.section { padding: 108px 0; }
+	.eyebrow { margin-bottom: 18px; color: #6d59f7; font-size: 11px; font-weight: 800; letter-spacing: .15em; }
+	.eyebrow.light { color: #aaa4ff; }
+	h1, h2, h3 { font-family: 'Manrope', sans-serif; letter-spacing: -.045em; }
+	h2 { margin-bottom: 24px; font-size: clamp(38px, 4.1vw, 62px); line-height: 1.02; }
+	p { color: var(--muted); line-height: 1.65; }
+	.button { display: inline-flex; align-items: center; justify-content: center; gap: 28px; min-height: 50px; padding: 0 22px; border: 1px solid var(--purple); border-radius: 5px; color: white; background: var(--purple); font-size: 13px; font-weight: 700; text-decoration: none; box-shadow: 0 7px 18px rgba(92,70,237,.22); }
+	.button span { font-size: 18px; }
+	.button-small { min-height: 38px; padding: 0 16px; font-size: 11px; }
+	.button.outline { color: var(--purple); background: white; box-shadow: none; }
+	.logo { display: flex; align-items: center; gap: 7px; color: white; font: 700 18px 'Manrope', sans-serif; text-decoration: none; }
+	.logo-mark { font-size: 24px; }
+	.site-header { position: absolute; z-index: 10; width: 100%; border-bottom: 1px solid rgba(255,255,255,.13); color: white; }
+	.nav-wrap { display: flex; align-items: center; height: 68px; }
+	.site-header nav { display: flex; gap: 34px; margin-left: 80px; }
+	.site-header nav a, .login { color: #d8d7f3; font-size: 12px; text-decoration: none; }
+	.nav-actions { display: flex; align-items: center; gap: 26px; margin-left: auto; }
+	.menu { display: none; border: 0; background: none; }
+	.menu span { display: block; width: 22px; height: 2px; margin: 5px; background: white; }
+
+	.hero { position: relative; overflow: hidden; padding: 150px 0 38px; color: white; background: linear-gradient(122deg,#11105d 0%,#1f197c 50%,#20167a 100%); }
+	.hero:before { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,.026) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.026) 1px,transparent 1px); background-size: 54px 54px; content: ''; }
+	.hero-glow { position: absolute; border-radius: 50%; filter: blur(3px); }
+	.glow-one { top: -180px; right: -110px; width: 650px; height: 650px; background: radial-gradient(circle,rgba(123,76,255,.3),transparent 68%); }
+	.glow-two { bottom: -300px; left: 30%; width: 600px; height: 600px; background: radial-gradient(circle,rgba(70,86,255,.22),transparent 68%); }
+	.hero-grid { position: relative; display: grid; grid-template-columns: .94fr 1.2fr; gap: 70px; align-items: center; }
+	.hero h1 { margin-bottom: 24px; font-size: clamp(50px,5vw,74px); line-height: .98; }
+	.hero-lead { max-width: 510px; margin-bottom: 18px; color: white; font-size: 18px; line-height: 1.45; }
+	.hero-description { max-width: 540px; color: #c8c7df; font-size: 14px; }
+	.hero-actions { display: flex; align-items: center; gap: 32px; margin: 30px 0 18px; }
+	.text-link { font-size: 13px; font-weight: 700; text-decoration: none; }
+	.light-link { color: white; }
+	.reassurance { display: flex; align-items: center; gap: 9px; color: #aaa9c9; font-size: 10px; }
+	.reassurance i { width: 3px; height: 3px; border-radius: 50%; background: #8b83f8; }
+	.hero-visual { position: relative; min-height: 530px; }
+	.product-window { position: absolute; z-index: 2; right: 15px; bottom: 20px; width: 580px; height: 350px; overflow: hidden; border: 7px solid rgba(255,255,255,.94); border-radius: 12px; color: var(--ink); background: white; box-shadow: 0 35px 80px rgba(4,3,45,.45); transform: perspective(1000px) rotateY(-3deg); }
+	.window-top { display: flex; align-items: center; gap: 12px; height: 43px; padding: 0 14px; color: white; background: #171366; font-size: 10px; }
+	.mini-logo { font-weight: 800; }
+	.window-top .search { flex: 1; padding: 8px 12px; border: 1px solid rgba(255,255,255,.18); border-radius: 4px; color: #aaa8ca; background: rgba(255,255,255,.08); }
+	.window-body { display: grid; grid-template-columns: 105px 1fr; height: calc(100% - 43px); }
+	.window-body aside { display: flex; flex-direction: column; gap: 19px; padding: 24px 14px; border-right: 1px solid #eeeef5; color: #8c8c9e; font-size: 9px; }
+	.window-body aside b { color: var(--purple); }
+	.research-panel { padding: 23px 26px; }
+	.company-head { display: flex; align-items: center; gap: 12px; }
+	.ticker { display: inline-flex; align-items: center; justify-content: center; width: 43px; height: 43px; border-radius: 4px; color: white; background: #ec912b; font-weight: 800; }
+	.company-head div, .demo-result div { display: flex; flex-direction: column; }
+	.company-head small, .demo-result small, .record-card small { margin-top: 3px; color: #999bad; }
+	.tabs { display: flex; gap: 27px; margin: 20px 0; padding-bottom: 10px; border-bottom: 1px solid #e9e9ef; color: #9b9bab; font-size: 9px; }
+	.tabs b { color: var(--purple); }
+	.research-panel h3 { margin: 19px 0 7px; font-size: 18px; }
+	.research-panel > p { font-size: 10px; }
+	.record-card { display: flex; align-items: center; gap: 10px; margin-top: 17px; padding: 12px; border: 1px solid #e6e5f3; border-radius: 6px; font-size: 10px; }
+	.record-card div { display: flex; flex: 1; flex-direction: column; }
+	.play { display: grid; width: 30px; height: 30px; place-items: center; border-radius: 50%; color: white; background: var(--purple); font-size: 9px; }
+	.phone { position: absolute; z-index: 3; right: -22px; bottom: 0; width: 130px; height: 260px; padding: 22px 12px; border: 6px solid #fbfbff; border-radius: 18px; color: white; background: #171366; box-shadow: 0 25px 50px rgba(3,2,44,.5); font-size: 8px; }
+	.phone-notch { position: absolute; top: 4px; left: 43px; width: 36px; height: 5px; border-radius: 5px; background: #44417d; }
+	.phone-card { display: flex; flex-direction: column; gap: 3px; margin-top: 20px; padding: 12px 8px; border-radius: 5px; color: var(--ink); background: white; }
+	.phone-card span { width: fit-content; padding: 4px; color: white; background: #e9902b; font-weight: 800; }
+	.phone-card small { color: #9292a1; }
+	.phone > p { margin-top: 18px; color: white; font-size: 8px; font-weight: 700; }
+	.phone-line { height: 25px; margin: 8px 0; border-radius: 4px; background: rgba(255,255,255,.1); }
+	.phone-line.short { height: 17px; }
+	.portrait { position: absolute; z-index: 1; top: 0; width: 205px; height: 215px; overflow: hidden; border: 1px solid rgba(255,255,255,.24); border-radius: 10px; background: rgba(255,255,255,.05); }
+	.portrait-left { left: 75px; }
+	.portrait-right { left: 295px; top: 24px; }
+	.person-art, .person-photo { position: relative; display: grid; overflow: hidden; place-items: center; color: rgba(255,255,255,.75); background: linear-gradient(150deg,#584bd0,#efb99a); font: 700 52px 'Manrope'; }
+	.person-art { height: 168px; }
+	.person-art:after, .person-photo:after { position: absolute; bottom: -40px; width: 150px; height: 125px; border-radius: 50% 50% 0 0; background: rgba(33,28,84,.55); content: ''; }
+	.kochie { background: linear-gradient(145deg,#d7e0e8,#7b8c9e); }
+	.portrait-label { position: absolute; bottom: 0; display: flex; flex-direction: column; width: 100%; padding: 10px 12px; color: white; background: rgba(9,8,59,.86); font-size: 10px; }
+	.portrait-label small { margin-top: 2px; color: #aaa8c9; }
+	.proof-row { position: relative; display: grid; grid-template-columns: repeat(3,1fr); margin-top: 65px; padding-top: 25px; border-top: 1px solid rgba(255,255,255,.13); }
+	.proof-row div { display: flex; align-items: center; gap: 13px; color: white; font-size: 11px; }
+	.proof-row span { color: #8580ce; }
+	.trust-strip { background: #100e50; color: white; }
+	.strip-inner { display: flex; align-items: center; gap: 40px; min-height: 76px; }
+	.strip-inner p { flex: 1; margin: 0; color: #a9a8c5; font-size: 11px; }
+	.strip-inner strong { font-size: 12px; }
+	.ausbiz-logo { display: inline-flex; align-items: center; color: #333443; font-weight: 800; letter-spacing: -.04em; }
+	.ausbiz-logo span { margin-right: 2px; padding: 2px 4px; color: white; background: #363645; font-size: .78em; letter-spacing: -.02em; }
+	.trust-strip .ausbiz-logo, footer .ausbiz-logo { color: white; }
+	.trust-strip .ausbiz-logo span, footer .ausbiz-logo span { color: #13114f; background: white; }
+
+	.two-col { display: grid; grid-template-columns: 1fr 1.05fr; gap: 100px; align-items: center; }
+	.section-copy > p:not(.eyebrow) { max-width: 540px; margin-bottom: 32px; }
+	.media-card { overflow: hidden; border: 1px solid #e1e1ec; border-radius: 10px; background: white; box-shadow: 0 18px 45px rgba(29,25,78,.12); }
+	.video-art { position: relative; display: grid; height: 300px; place-items: center; color: white; background: radial-gradient(circle at 75% 30%,#5142bc 0,transparent 35%),linear-gradient(135deg,#11105d,#272081); }
+	.video-art:after { position: absolute; inset: 0; background-image: linear-gradient(45deg,transparent 47%,rgba(255,255,255,.06) 48%,transparent 49%); background-size: 30px 30px; content: ''; }
+	.program { position: absolute; z-index: 1; top: 20px; left: 22px; font-size: 9px; letter-spacing: .12em; }
+	.show-logo { z-index: 1; font: 700 40px 'Manrope'; }
+	.video-art button { position: absolute; z-index: 2; right: 35px; bottom: 30px; width: 56px; height: 56px; border: 1px solid rgba(255,255,255,.5); border-radius: 50%; color: white; background: rgba(255,255,255,.14); }
+	.media-info { display: flex; align-items: center; justify-content: space-between; padding: 19px 22px; font-size: 11px; }
+	.media-info > div { display: flex; align-items: center; gap: 12px; }
+	.media-info .ticker { width: 36px; height: 36px; }
+	.media-info p { display: flex; flex-direction: column; margin: 0; color: var(--ink); }
+	.media-info small { color: var(--muted); }
+	.media-info a { color: var(--purple); font-weight: 700; text-decoration: none; }
+	.journey { display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; gap: 20px; align-items: center; margin-top: 70px; padding: 28px 34px; border-radius: 8px; background: var(--lavender); }
+	.journey > div { display: flex; align-items: center; gap: 18px; }
+	.journey > div > span { color: #9a8dff; font-size: 12px; }
+	.journey p { display: flex; flex-direction: column; margin: 0; color: var(--ink); font-size: 12px; }
+	.journey p b { margin-bottom: 4px; font-size: 9px; letter-spacing: .1em; }
+	.journey i { color: #a8a2d8; font-style: normal; }
+
+	.compare-section { background: #f7f7fb; }
+	.center-heading { max-width: 680px; margin: 0 auto 56px; text-align: center; }
+	.center-heading > p:last-child { max-width: 610px; margin-right: auto; margin-left: auto; }
+	.compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: 950px; margin: auto; }
+	.compare-card { min-height: 430px; padding: 38px 42px; border: 1px solid #e2e2ec; border-radius: 10px; background: white; }
+	.obii-card { border: 2px solid #cfc8ff; box-shadow: 0 15px 35px rgba(68,51,170,.08); }
+	.obii-card .logo { color: var(--navy); }
+	.card-brand { margin-bottom: 28px; }
+	.card-label { margin-bottom: 12px; color: #7a69ea; font-size: 9px; font-weight: 800; letter-spacing: .12em; }
+	.compare-card h3 { margin-bottom: 12px; font-size: 26px; }
+	.compare-card > p:not(.card-label) { font-size: 13px; }
+	.compare-card ul, .price-card ul { display: grid; gap: 15px; margin: 25px 0 0; padding: 23px 0 0; border-top: 1px solid var(--line); list-style: none; }
+	.compare-card li, .price-card li { position: relative; padding-left: 23px; color: #4e4f69; font-size: 12px; }
+	.compare-card li:before, .price-card li:before { position: absolute; left: 0; color: var(--purple); content: '✓'; font-weight: 800; }
+	.closing-line { margin: 33px 0 0; text-align: center; font-size: 12px; }
+	.closing-line strong { color: var(--ink); }
+
+	.steps-band { padding: 90px 0; color: white; background: linear-gradient(110deg,#12105c,#272080); }
+	.steps-band h2 { font-size: clamp(42px,5vw,66px); }
+	.steps-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 65px; margin-top: 58px; padding-top: 34px; border-top: 1px solid rgba(255,255,255,.17); }
+	.steps-grid span { display: block; margin-bottom: 35px; color: #8984d1; font-size: 12px; }
+	.steps-grid h3 { font-size: 13px; letter-spacing: .12em; }
+	.steps-grid p { max-width: 290px; color: #bdbcd6; font-size: 12px; }
+	.demo-grid { gap: 80px; }
+	.demo-window { overflow: hidden; border: 1px solid #dddeea; border-radius: 8px; background: #f9f9fc; box-shadow: 0 20px 50px rgba(31,28,84,.1); }
+	.demo-bar { display: flex; justify-content: space-between; padding: 15px 20px; color: white; background: #171366; font-size: 9px; font-weight: 700; }
+	.demo-search { margin: 20px; padding: 14px; border: 1px solid #dcdde8; border-radius: 5px; color: #a1a1b0; background: white; font-size: 11px; }
+	.demo-search b { float: right; color: var(--ink); }
+	.demo-result { display: flex; align-items: center; gap: 12px; margin: 0 20px; padding: 15px; border: 1px solid #dcdde8; border-radius: 5px; background: white; font-size: 11px; }
+	.demo-result div { flex: 1; }
+	.demo-result .ticker { width: 38px; height: 38px; }
+	.flow-card { margin: 20px; padding: 20px; border-radius: 6px; background: white; font-size: 11px; }
+	.flow { display: grid; grid-template-columns: repeat(3,1fr); margin-top: 19px; }
+	.flow span { display: flex; flex-direction: column; color: #696a7c; font-size: 8px; font-weight: 800; letter-spacing: .06em; }
+	.flow i { display: grid; width: 25px; height: 25px; margin-bottom: 9px; place-items: center; border-radius: 50%; color: white; background: var(--purple); font-style: normal; }
+	.flow small { margin-top: 5px; color: #a0a0ae; font-size: 8px; font-weight: 400; letter-spacing: 0; }
+	.number-list { display: grid; gap: 4px; }
+	.number-list > div { display: grid; grid-template-columns: 36px 1fr; padding: 18px 0; border-bottom: 1px solid var(--line); }
+	.number-list span { color: var(--purple); font-size: 11px; }
+	.number-list p { margin: 0; font-size: 12px; }
+	.number-list b { display: block; color: var(--ink); }
+	.return-banner { display: flex; align-items: center; justify-content: space-between; margin-top: 80px; padding: 23px 28px; border: 1px solid #dcd7ff; border-radius: 7px; background: var(--lavender); }
+	.return-banner > div { display: flex; align-items: center; gap: 18px; }
+	.return-banner > div > span { display: grid; width: 38px; height: 38px; place-items: center; border-radius: 50%; color: white; background: var(--purple); }
+	.return-banner p { display: flex; flex-direction: column; margin: 0; color: var(--ink); font-size: 12px; }
+	.return-banner small { margin-top: 4px; color: var(--muted); }
+
+	.people-section { background: #fafafd; }
+	.section-intro { display: grid; grid-template-columns: 1fr 1fr; gap: 90px; align-items: end; margin-bottom: 50px; }
+	.section-intro > p { padding-bottom: 15px; }
+	.people-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+	.person-card { display: grid; grid-template-columns: 190px 1fr; grid-template-rows: auto auto 1fr; column-gap: 28px; overflow: hidden; border: 1px solid var(--line); border-radius: 8px; background: white; }
+	.person-photo { grid-row: 1 / 4; height: 240px; font-size: 54px; }
+	.person-card .card-label { align-self: end; margin: 0; padding-top: 25px; }
+	.person-card h3 { margin: 7px 0; font-size: 22px; }
+	.person-card > p:last-child { padding-right: 18px; font-size: 11px; }
+	.expert-list { display: grid; grid-template-columns: repeat(4,1fr); margin-top: 24px; border: 1px solid var(--line); border-radius: 7px; background: white; }
+	.expert-list span { display: flex; flex-direction: column; padding: 18px; border-right: 1px solid var(--line); font-size: 11px; font-weight: 700; }
+	.expert-list span:last-child { border-right: 0; }
+	.expert-list small { margin-top: 4px; color: var(--muted); font-weight: 400; }
+
+	.company-section .center-heading { margin-bottom: 45px; }
+	.companies { display: grid; grid-template-columns: repeat(5,1fr); gap: 12px; }
+	.companies article { position: relative; display: flex; align-items: center; gap: 12px; min-height: 85px; padding: 15px; border: 1px solid var(--line); border-radius: 7px; }
+	.companies article > span { display: grid; width: 40px; height: 40px; place-items: center; border-radius: 4px; color: white; background: var(--company-color); font-size: 10px; font-weight: 800; }
+	.companies article div { display: flex; flex-direction: column; font-size: 10px; }
+	.companies article small { margin-top: 4px; color: var(--muted); }
+	.companies article i { position: absolute; top: 8px; right: 9px; color: #aaa; font-style: normal; }
+
+	.pricing-section { background: #f7f7fb; }
+	.pricing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; max-width: 900px; margin: auto; }
+	.price-card { position: relative; padding: 40px; border: 1px solid var(--line); border-radius: 10px; background: white; }
+	.price-card.featured { border: 2px solid var(--purple); box-shadow: 0 16px 30px rgba(88,67,220,.14); }
+	.price-card h3 { margin-bottom: 8px; font-size: 25px; }
+	.price-card > p:not(.card-label):not(.gst) { min-height: 44px; font-size: 12px; }
+	.price { display: flex; align-items: flex-start; margin: 28px 0 3px; font: 800 54px 'Manrope'; letter-spacing: -.07em; }
+	.price sup { margin: 10px 4px 0 0; font-size: 14px; letter-spacing: 0; }
+	.price small { margin: 9px 0 0 5px; font: 600 11px 'DM Sans'; letter-spacing: 0; line-height: 1.3; }
+	.gst { font-size: 10px; }
+	.price-card ul { min-height: 166px; }
+	.price-card .button { width: 100%; margin-top: 28px; }
+	.flag { position: absolute; top: -13px; right: 20px; padding: 7px 12px; border-radius: 20px; color: white; background: var(--purple); font-size: 8px; font-weight: 800; letter-spacing: .08em; }
+	.reassurance-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 15px; }
+	.reassurance-grid > div { padding: 27px; border: 1px solid var(--line); border-radius: 8px; }
+	.reassurance-grid span { display: grid; width: 36px; height: 36px; margin-bottom: 28px; place-items: center; border-radius: 50%; color: var(--purple); background: var(--lavender); font-weight: 800; }
+	.reassurance-grid b { display: block; margin-bottom: 9px; font-size: 12px; }
+	.reassurance-grid p { margin: 0; font-size: 11px; }
+
+	.faq-section { padding-top: 60px; }
+	.faq-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 110px; }
+	.faq-grid > div:first-child > p:last-child { max-width: 350px; }
+	.faq-list { border-top: 1px solid var(--line); }
+	details { border-bottom: 1px solid var(--line); }
+	summary { display: flex; align-items: center; justify-content: space-between; padding: 22px 0; cursor: pointer; font-size: 13px; font-weight: 700; list-style: none; }
+	summary span { color: var(--purple); font-size: 20px; font-weight: 400; }
+	details p { padding-right: 50px; font-size: 12px; }
+	details[open] summary span { transform: rotate(45deg); }
+
+	.final-cta { padding: 78px 0; color: white; background: linear-gradient(120deg,#12105d,#2a2187); }
+	.final-inner { display: flex; align-items: center; justify-content: space-between; }
+	.final-inner h2 { max-width: 750px; font-size: clamp(38px,4vw,56px); }
+	.final-inner p:not(.eyebrow) { margin: 0; color: #bbb9d7; }
+	.final-inner > div:last-child { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+	.final-inner small { color: #aaa8c9; font-size: 9px; }
+	footer { color: white; background: #0e0d4a; }
+	.footer-top { display: flex; align-items: center; min-height: 95px; border-bottom: 1px solid rgba(255,255,255,.12); }
+	.footer-top nav { display: flex; gap: 26px; margin-left: 90px; }
+	.footer-top nav a { color: #a7a6c3; font-size: 10px; text-decoration: none; }
+	.footer-top .ausbiz-logo { margin-left: auto; }
+	.footer-bottom { display: flex; justify-content: space-between; padding: 18px 0 25px; color: #77769a; font-size: 9px; }
+
+	@media (max-width: 900px) {
+		.shell { width: min(100% - 32px, 620px); }
+		.section { padding: 76px 0; }
+		.site-header nav, .nav-actions { display: none; }
+		.menu { display: block; margin-left: auto; }
+		.hero { padding-top: 115px; }
+		.hero-grid, .two-col, .section-intro, .faq-grid { grid-template-columns: 1fr; gap: 48px; }
+		.hero h1 { font-size: clamp(44px,13vw,66px); }
+		.hero-description { font-size: 13px; }
+		.hero-visual { min-height: 480px; transform: scale(.9); transform-origin: left top; }
+		.portrait-left { left: 15px; }
+		.portrait-right { left: 230px; }
+		.product-window { right: auto; left: 0; width: 560px; }
+		.phone { right: -10px; }
+		.proof-row { gap: 14px; margin-top: 5px; }
+		.proof-row div { align-items: flex-start; flex-direction: column; }
+		.strip-inner { flex-wrap: wrap; gap: 8px 20px; padding: 18px 0; }
+		.strip-inner p { flex-basis: 70%; }
+		.strip-inner strong { width: 100%; }
+		.example .two-col { gap: 45px; }
+		.journey { grid-template-columns: 1fr; }
+		.journey > i { display: none; }
+		.steps-grid, .reassurance-grid { grid-template-columns: 1fr 1fr; }
+		.demo-grid { gap: 55px; }
+		.people-grid { grid-template-columns: 1fr; }
+		.companies { grid-template-columns: repeat(3,1fr); }
+		.final-inner { align-items: flex-start; flex-direction: column; gap: 35px; }
+	}
+
+	@media (max-width: 600px) {
+		.shell { width: calc(100% - 32px); }
+		h2 { font-size: 38px; }
+		.section { padding: 68px 0; }
+		.hero { padding-top: 104px; }
+		.hero h1 { font-size: 43px; }
+		.hero-lead { font-size: 16px; }
+		.hero-actions { align-items: stretch; flex-direction: column; gap: 18px; }
+		.hero-actions .button { width: 100%; }
+		.reassurance { flex-wrap: wrap; }
+		.hero-visual { width: 590px; min-height: 390px; transform: scale(.59); transform-origin: left top; margin-bottom: -140px; }
+		.portrait { top: 0; }
+		.product-window { bottom: 0; }
+		.phone { bottom: -5px; }
+		.proof-row { grid-template-columns: 1fr; gap: 18px; margin-top: 20px; }
+		.proof-row div { flex-direction: row; }
+		.strip-inner p { flex-basis: 60%; font-size: 10px; }
+		.media-card { border-radius: 7px; }
+		.video-art { height: 220px; }
+		.media-info { align-items: flex-start; flex-direction: column; gap: 15px; }
+		.journey { margin-top: 35px; padding: 24px; }
+		.compare-grid, .pricing-grid { grid-template-columns: 1fr; }
+		.compare-card, .price-card { padding: 30px 24px; }
+		.steps-band { padding: 68px 0; }
+		.steps-grid { grid-template-columns: 1fr; gap: 30px; }
+		.steps-grid > div { padding-bottom: 25px; border-bottom: 1px solid rgba(255,255,255,.12); }
+		.steps-grid span { margin-bottom: 15px; }
+		.demo-window { margin-right: -5px; margin-left: -5px; }
+		.flow small { display: none; }
+		.return-banner { align-items: stretch; flex-direction: column; gap: 22px; margin-top: 50px; }
+		.section-intro { gap: 10px; }
+		.person-card { grid-template-columns: 130px 1fr; column-gap: 18px; }
+		.person-photo { height: 210px; }
+		.person-card h3 { font-size: 18px; }
+		.expert-list { grid-template-columns: 1fr 1fr; }
+		.expert-list span:nth-child(2) { border-right: 0; }
+		.expert-list span:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+		.companies { grid-template-columns: 1fr 1fr; }
+		.companies article { min-height: 75px; }
+		.reassurance-grid { grid-template-columns: 1fr; }
+		.reassurance-grid > div { display: grid; grid-template-columns: 50px 1fr; padding: 20px; }
+		.reassurance-grid span { grid-row: 1 / 3; margin: 0; }
+		.reassurance-grid b, .reassurance-grid p { grid-column: 2; }
+		.faq-grid { gap: 30px; }
+		.final-inner h2 { font-size: 36px; }
+		.footer-top { align-items: flex-start; flex-direction: column; gap: 25px; padding: 30px 0; }
+		.footer-top nav { flex-wrap: wrap; gap: 15px 22px; margin: 0; }
+		.footer-top .ausbiz-logo { margin: 0; }
+	}
+</style>
