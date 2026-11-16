@@ -153,3 +153,14 @@
 .hero .portraitlabel small{font-size:10px!important;line-height:1.1!important;opacity:.92}
 .hero .portrait img{height:calc(100% - 43px)!important;position:absolute;top:43px;left:0;width:100%;object-fit:cover}
 @media(max-width:720px){.hero .portraitlabel{min-height:40px;padding:6px 7px}.hero .portraitlabel strong{font-size:9.5px!important}.hero .portraitlabel small{font-size:8px!important}.hero .portrait img{top:40px;height:calc(100% - 40px)!important}}
+
+/* Mobile navigation menu: same pattern as the content pages. */
+.menu{display:none}
+@media(max-width:720px){.menu{display:block;position:relative}.menu summary{list-style:none;font-size:19px;color:#fff;padding:4px 7px;cursor:pointer}.menu summary::-webkit-details-marker{display:none}.menu .menu-panel{position:absolute;right:0;top:38px;width:210px;background:#161c47;border:1px solid #343e82;border-radius:12px;padding:13px;box-shadow:0 15px 35px #090c27;display:grid;gap:10px;font-size:13px;z-index:22}.menu .menu-panel a{padding:5px}.navactions{gap:8px}}
+
+/* FAQ accordion: each item opens and closes. */
+.faqitem summary{display:block;list-style:none;cursor:pointer}
+.faqitem summary::-webkit-details-marker{display:none}
+.faqitem summary:focus-visible{outline:2px solid #6c61eb;outline-offset:4px;border-radius:4px}
+.faqitem h4 span::before{content:'+'}
+.faqitem[open] h4 span::before{content:'\2212'}
