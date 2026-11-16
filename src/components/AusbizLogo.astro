@@ -1,0 +1,21 @@
+---
+import ausbizLogo from '../assets/ausbiz-logo.png';
+
+interface Props {
+	class?: string;
+	height?: number;
+	loading?: 'eager' | 'lazy';
+}
+
+const { class: className, height = 28, loading = 'lazy' } = Astro.props;
+---
+
+<img
+	src={ausbizLogo.src}
+	alt="ausbiz"
+	width={Math.round(height * (214 / 51))}
+	height={height}
+	class:list={['ausbiz-brand', className]}
+	style={`height:${height}px;width:auto`}
+	loading={loading}
+/>

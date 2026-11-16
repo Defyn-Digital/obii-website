@@ -1,46 +1,7 @@
-# Astro Starter Kit: Basics
+# OBII website
 
-```sh
-npm create astro@latest -- --template basics
-```
+This Astro project hosts two marketing homepage variants for OBII. The root path (`/`) is a simple chooser that links to `/version1` and `/version2`. Copy `.env.example` to `.env` and set `PUBLIC_APP_ROOT_URL` to the OBII web app base URL (no trailing slash); login, sign-up, and trial CTAs use that value to build links to `/login` and `/register`.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+You need Node.js **22.23.4 or newer**. Run `npm install`, then `npm run dev` for local development (default `http://localhost:4321`). Use `npm run build` to produce a static site in `dist/`, and `npm run preview` to serve that build locally. See [AGENTS.md](./AGENTS.md) for dev-server background mode notes.
 
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
-```
-
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+There is no analytics or product instrumentation in this repo: no PostHog, Google Analytics, or similar tags, and no autocapture or custom event tracking. Add those separately if you deploy to production.

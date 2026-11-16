@@ -1,0 +1,22 @@
+---
+import obiiLogo from '../assets/obii-logo_light.svg';
+
+interface Props {
+	class?: string;
+	height?: number;
+	loading?: 'eager' | 'lazy';
+}
+
+const { class: className, height = 26, loading = 'lazy' } = Astro.props;
+const width = Math.round(height * (500 / 132));
+---
+
+<img
+	src={obiiLogo.src}
+	alt="OBII"
+	width={width}
+	height={height}
+	class:list={['obii-logo', className]}
+	style={`height:${height}px;width:auto`}
+	loading={loading}
+/>

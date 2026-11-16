@@ -1,0 +1,207 @@
+---
+import PlayArrowIcon from './PlayArrowIcon.astro';
+
+interface Props {
+	href: string;
+	poster: string;
+	videoSrc: string;
+	alt: string;
+	variant?: 'new' | 'index';
+}
+
+const { href, poster, videoSrc, alt, variant = 'new' } = Astro.props;
+---
+
+<a
+	class:list={['video-art', `video-art--${variant}`]}
+	href={href}
+	target="_blank"
+	rel="noopener noreferrer"
+	data-hover-preview
+>
+	<div class="video-art__frame">
+		<video class="video-art__video" muted playsinline loop preload="none" aria-hidden="true" tabindex="-1">
+			<source src={videoSrc} type="video/mp4" />
+		</video>
+		<img class="video-art__poster" src={poster} alt={alt} />
+	</div>
+	<span class="play" aria-hidden="true"><PlayArrowIcon /></span>
+</a>
+
+<style>
+	.video-art {
+		position: relative;
+		display: block;
+		width: 100%;
+		overflow: hidden;
+		isolation: isolate;
+		text-decoration: none;
+		color: white;
+	}
+
+	.video-art--new {
+		height: 280px;
+		background: #15212a;
+	}
+
+	.video-art--index {
+		height: 300px;
+		background: #11105d;
+	}
+
+	.video-art__frame {
+		position: absolute;
+		inset: 0;
+		overflow: hidden;
+	}
+
+	.video-art__video,
+	.video-art__poster {
+		position: absolute;
+		inset: 0;
+		display: block;
+		width: 100%;
+		height: 100%;
+		max-width: none;
+		max-height: none;
+		object-fit: cover;
+	}
+
+	.video-art__video {
+		z-index: 0;
+	}
+
+	.video-art__poster {
+		z-index: 1;
+		transition: opacity 0.2s ease;
+	}
+
+	.video-art.is-previewing .video-art__poster {
+		opacity: 0;
+	}
+
+	.video-art :global(.play) {
+		position: absolute;
+		z-index: 2;
+	}
+
+	.video-art--new :global(.play) {
+		right: 24px;
+		bottom: 22px;
+		display: grid;
+		width: 54px;
+		height: 54px;
+		place-items: center;
+		border-radius: 50%;
+		background: white;
+		color: var(--ink, #111);
+		font-size: 26px;
+	}
+
+	.video-art--index :global(.play) {
+		right: 35px;
+		bottom: 30px;
+		display: grid;
+		width: 56px;
+		height: 56px;
+		place-items: center;
+		border: 1px solid rgba(255, 255, 255, 0.5);
+		border-radius: 50%;
+		color: white;
+		background: rgba(255, 255, 255, 0.14);
+		font-size: 26px;
+	}
+
+	@media (max-width: 600px) {
+		.video-art--index {
+			height: 220px;
+		}
+	}
+</style>
+
+<script>
+	const PREVIEW_MQ = '(min-width: 920px) and (hover: hover)';
+	const REDUCED_MOTION_MQ = '(prefers-reduced-motion: reduce)';
+	const PREVIEW_START_SECONDS = 10 * 60 + 17;
+
+	function stopPreview(link: HTMLAnchorElement, video: HTMLVideoElement) {
+		video.pause();
+		video.currentTime = PREVIEW_START_SECONDS;
+		link.classList.remove('is-previewing');
+	}
+
+	function seekToPreviewStart(video: HTMLVideoElement) {
+		if (!Number.isFinite(video.duration) || video.duration <= 0) {
+			video.currentTime = PREVIEW_START_SECONDS;
+			return;
+		}
+		video.currentTime = Math.min(PREVIEW_START_SECONDS, Math.max(0, video.duration - 0.25));
+	}
+
+	function playFromPreviewStart(video: HTMLVideoElement, onPlayFailed?: () => void) {
+		const start = () => {
+			seekToPreviewStart(video);
+			video.play().catch(() => onPlayFailed?.());
+		};
+
+		if (video.readyState >= 1) {
+			start();
+			return;
+		}
+
+		video.addEventListener('loadedmetadata', () => start(), { once: true });
+	}
+
+	function bindHoverPreview(link: HTMLAnchorElement) {
+		if (link.dataset.hoverPreviewBound === 'true') return;
+
+		const video = link.querySelector<HTMLVideoElement>('.video-art__video');
+		if (!video) return;
+
+		link.dataset.hoverPreviewBound = 'true';
+
+		const viewportMq = window.matchMedia(PREVIEW_MQ);
+		const reducedMotionMq = window.matchMedia(REDUCED_MOTION_MQ);
+
+		const canPreview = () => viewportMq.matches && !reducedMotionMq.matches;
+
+		const ensureLoaded = () => {
+			if (video.dataset.loaded === 'true') return;
+			video.dataset.loaded = 'true';
+			video.load();
+		};
+
+		const startPreview = () => {
+			if (!canPreview()) return;
+			ensureLoaded();
+			link.classList.add('is-previewing');
+			playFromPreviewStart(video, () => stopPreview(link, video));
+		};
+
+		const endPreview = () => {
+			stopPreview(link, video);
+		};
+
+		const onViewportChange = () => {
+			if (!canPreview()) endPreview();
+		};
+
+		viewportMq.addEventListener('change', onViewportChange);
+		reducedMotionMq.addEventListener('change', onViewportChange);
+
+		link.addEventListener('mouseenter', startPreview);
+		link.addEventListener('mouseleave', endPreview);
+		link.addEventListener('focusin', startPreview);
+		link.addEventListener('focusout', (event) => {
+			if (event.relatedTarget instanceof Node && link.contains(event.relatedTarget)) return;
+			endPreview();
+		});
+	}
+
+	function initHoverPreviews() {
+		document.querySelectorAll<HTMLAnchorElement>('.video-art[data-hover-preview]').forEach(bindHoverPreview);
+	}
+
+	initHoverPreviews();
+	document.addEventListener('astro:page-load', initHoverPreviews);
+</script>
