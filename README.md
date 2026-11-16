@@ -4,4 +4,8 @@ This Astro project hosts two marketing homepage variants for OBII. The root path
 
 You need Node.js **22.23.4 or newer**. Run `npm install`, then `npm run dev` for local development (default `http://localhost:4321`). Use `npm run build` to produce a static site in `dist/`, and `npm run preview` to serve that build locally. See [AGENTS.md](./AGENTS.md) for dev-server background mode notes.
 
-There is no analytics or product instrumentation in this repo: no PostHog, Google Analytics, or similar tags, and no autocapture or custom event tracking. Add those separately if you deploy to production.
+There is no analytics or product instrumentation in this repo: no PostHog, Google Analytics, or similar tags, and no autocapture or custom event tracking.
+
+# Notes
+
+Please don't add posthog yet, or if you do - look at the current site's implementation. Importantly, cta_clicked needs to be setup, and some other modification should be made so we can see the traffic from old site to new.
