@@ -2,6 +2,7 @@
 import Layout from './Layout.astro';
 import SiteHeader from '../components/SiteHeader.astro';
 import SiteFooter from '../components/SiteFooter.astro';
+import Motion from '../components/Motion.astro';
 import '../styles/site.css';
 
 interface Props {
@@ -19,4 +20,5 @@ const { title, description } = Astro.props;
 	</div>
 	<slot />
 	<SiteFooter />
+	<Motion />
 </Layout>
